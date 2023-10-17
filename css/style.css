@@ -1,0 +1,145 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+:root {
+  --cl-primary: purple;
+  --cl-secondary: plum;
+  --cl-light: white;
+  --cl-dark: black;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-heading: "Courier New", Courie, monospace;
+  --fs-medium: var(--fs-medium);
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+nav ul li {
+  flex: 1;
+}
+
+nav li a,
+nav li a:link,
+nav li a:visited {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--cl-primary);
+  transition: transform 0.2s ease;
+}
+
+nav li a:hover,
+nav li a:focus {
+  transform: scale(1.3);
+  text-decoration: underline;
+}
+
+nav li a:active {
+  transform: scale(1.3) translateX(20px);
+}
+
+/* direct child combinator : > */
+main > p {
+  font-size: var(--fs-medium);
+}
+
+/* adjacent combinator: + */
+h2 + p {
+  background-color: var(--cl-dark);
+  color: var(--cl-light);
+  padding: 1em;
+}
+
+/* sibling combinator */
+.stars span {
+  cursor: pointer;
+  transition: opacity 0.15s ease-in;
+}
+.stars span:hover ~ span {
+  opacity: 0.4;
+}
+
+a[href="#"] {
+  border: 1px solid var(--cl-primary);
+}
+
+a[href$=".pdf"] {
+  display: block;
+  border-left: 8px solid var(--cl-secondary);
+  background-color: var(--cl-primary);
+  width: calc(100% - 3rem - 8px);
+  padding: 1rem;
+  margin: 0.5rem;
+  color: var(--cl-light);
+}
+
+a[href$=".pdf"]::after {
+  content: "\2193";
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: yellow;
+}
+
+h2 + p::first-line {
+  color: var(--cl-secondary);
+}
+
+h3 + p::first-letter {
+  font-size: 2rem;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.2em 0.3em;
+  margin-right: 0.2em;
+  background-color: var(--cl-primary);
+  color: var(--cl-secondary);
+}
+
+.bg-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* width: 30px; */
+  margin: 1.5rem 0;
+}
+
+.bg-menu span,
+.bg-menu span::before,
+.bg-menu span::after {
+  display: block;
+
+  width: 25px;
+  height: 1px;
+  background-color: var(--cl-dark);
+}
+.bg-menu span {
+  justify-self: center;
+}
+.bg-menu span::before,
+.bg-menu span::after {
+  content: "";
+  margin: 0.4em 0;
+}
